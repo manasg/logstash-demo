@@ -1,0 +1,3 @@
+LOG1 REQ-%{GREEDYDATA:stuff}
+LOG2 APP-%{GREEDYDATA:appstuff}
+P_IGN IGNORE-%{GREEDYDATA:ignorestuff}
