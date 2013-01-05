@@ -1,0 +1,3 @@
+LOG1 REQ-.*
+LOG2 APP-.*
+IGNORE IGNORE-.*
