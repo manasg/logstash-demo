@@ -1,3 +1,5 @@
 input.log
 *.swp
+data/
+.sass-cache/
 

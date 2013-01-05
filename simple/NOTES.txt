@@ -1,0 +1,34 @@
+If we have one pattern. 1 out of 3 lines match the pattern. 2 will show grokparsefailure as a tag.
+
+pattern spec in conf - contains 3 patterns - so no more grokparse failure
+
+lets try dropping one
+
+
+----
+
+even if grok parse failure is done - the log still makes it! but no tags/fields!
+
+-----
+
+if a log file contains two different types of logs - and you create separate grok filters - you will get grok parse failure because, at any time - 1 filter won't match the other line
+
+--- 
+
+the line would still make it to wherever you want it to go - (elastic search) - but will have the bad tag!
+
+-----
+
+i have 2 grok filters now and i pass 2 log lines through.
+console will show 2 grok parse failures
+how many go to elastic search?
+just 2! 
+Its a sequential run of filters with additions.
+
+First grok filter - parses it correctly, adds the fields
+The next one can't parse it - so adds grok parse failure as a tag… BUT if we should not use grep to drop it!
+
+Essentially if a log file has two TYPEs of logs - we need to be creative in our patterns/ especially if we want to index on fields!
+
+-------
+
