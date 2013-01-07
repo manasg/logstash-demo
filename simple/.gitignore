@@ -1,6 +1,5 @@
-gae_sample.log
 input.log
 *.swp
 data/
 .sass-cache/
-
+sample_logs

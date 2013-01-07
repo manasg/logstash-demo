@@ -1,4 +1,6 @@
-APPENGINE_REQ_LOG %{IPORHOST:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:timestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|-)" %{NUMBER:response} (?:%{NUMBER:bytes}|-) (?:%{QS:referrer}|-) "%{GREEDYDATA:agent}" "%{IPORHOST:host}" %{DATA:gae_stats} instance=%{GREEDYDATA:gae_instance}
+APPENGINE_REQ_LOG %{IPORHOST:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:timestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|-)" %{NUMBER:response} (?:%{NUMBER:bytes}|-) (?:%{QS:referrer}|-) (?:"%{GREEDYDATA:agent}"|-) "%{IPORHOST:host}" %{DATA:gae_stats} instance=%{GREEDYDATA:gae_instance}
 
+APPENGINE_STACKTRACE ^\t:\s%{GREEDYDATA:stacktrace}
 # not using JAVACLASS since it doesn't work for "com.easilydo.do_proposer.UnifiedDoProposer"
 APPENGINE_APP_LOG ^\t%{INT:severity}:%{INT:timestamp}.%{INT:app_log_millis} %{DATA:java_class} %{DATA:java_method}: %{GREEDYDATA:log_message}
+
