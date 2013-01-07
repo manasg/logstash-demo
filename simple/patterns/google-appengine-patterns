@@ -1,3 +1,2 @@
-APPENGINE_REQ_LOG %{IPORHOST:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:timestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|-)" %{NUMBER:response} (?:%{NUMBER:bytes}|-) (?:%{QS:referrer}|-) "%{GREEDYDATA:agent}" "%{IPORHOST:host}"
-#%{DATA:gae_stats} instance=%{GREEDYDATA:gae_instance}"
+APPENGINE_REQ_LOG %{IPORHOST:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:timestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|-)" %{NUMBER:response} (?:%{NUMBER:bytes}|-) (?:%{QS:referrer}|-) "%{GREEDYDATA:agent}" "%{IPORHOST:host}" %{DATA:gae_stats} instance=%{GREEDYDATA:gae_instance}
 
