@@ -1,4 +1,4 @@
-APPENGINE_REQ_LOG %{IPORHOST} %{USER} %{USER} \[%{HTTPDATE:timestamp}\] "(?:%{WORD} %{NOTSPACE}(?: HTTP/%{NUMBER:})?|-)" %{NUMBER:response} (?:%{NUMBER}|-) (?:%{QS}|-) (?:"%{GREEDYDATA}"|-) "%{IPORHOST}" %{DATA} instance=%{GREEDYDATA}
+APPENGINE_REQ_LOG %{IPORHOST} %{USER} %{USER} \[%{HTTPDATE:timestamp}\] "(?:%{WORD} %{NOTSPACE}(?: HTTP/%{NUMBER:})?|-)" %{NUMBER:response} (?:%{NUMBER}|-) (?:%{QS}|-) (?:"%{GREEDYDATA}"|-) "%{IPORHOST}"
 
 NOT_APPENGINE_REQ_LOG ^\t
 
