@@ -1,7 +1,10 @@
 APPENGINE_REQ_LOG %{IPORHOST} %{USER} %{USER} \[%{HTTPDATE:timestamp}\] "(?:%{WORD} %{NOTSPACE}(?: HTTP/%{NUMBER:})?|-)" %{NUMBER:response} (?:%{NUMBER}|-) (?:%{QS}|-) (?:"%{GREEDYDATA}"|-) "%{IPORHOST}" %{DATA} instance=%{GREEDYDATA}
 
+NOT_APPENGINE_REQ_LOG ^\t
+
+APPENGINE_APP_LOG_TIMESTAMP %{INT:app_log_timestamp}.%{INT:app_log_timestamp_fraction}
+APPENGINE_APP_LOG ^\t%{INT:severity}:%{APPENGINE_APP_LOG_TIMESTAMP} %{DATA} %{DATA}: %{GREEDYDATA:log_message}
+
 APPENGINE_STACKTRACE ^\t:\s%{GREEDYDATA:stacktrace}
-APPENGINE_STACKTRACE_CONT ^\t%{INT:severity}:%{INT:timestamp}.%{INT:app_log_millis} <continued from previous message>
-# not using JAVACLASS since it doesn't work for "com.easilydo.do_proposer.UnifiedDoProposer"
-APPENGINE_APP_LOG ^\t%{INT:severity}:%{INT:timestamp}.%{INT:app_log_millis} %{DATA} %{DATA}: %{GREEDYDATA:log_message}
+APPENGINE_STACKTRACE_CONT ^\t%{INT:severity}:%{APPENGINE_APP_LOG_TIMESTAMP} <continued from previous message>
 
