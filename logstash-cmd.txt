@@ -1,7 +1,7 @@
 wget https://logstash.objects.dreamhost.com/release/logstash-1.1.7-monolithic.jar
 
-java -jar logstash-1.1.7-monolithic.jar agent -f gae-logstash.conf 
-java -jar logstash-1.1.7-monolithic.jar agent -f gae-logstash.conf -- web --backend elasticsearch:///?local
+java -jar logstash-1.1.7-monolithic.jar agent -f gae-logstash.conf -v 
+java -jar logstash-1.1.7-monolithic.jar agent -f gae-logstash.conf -v -- web --backend elasticsearch:///?local
 
 Wait for Elastic Search to be completely UP before putting data in. Test by accessing the browser
 
@@ -11,7 +11,8 @@ wget http://github.com/rashidkpc/Kibana/tarball/kibana-ruby -O kibana-ruby.tar.g
 untar
 sudo gem install bundler
 cd _kibana_
-Comment out Kibana host in KibanaConfig.rb
+Comment out Kibana host in KibanaConfig.rb so that it listens on all interfaces
+Set timezone to PST
 
 sudo apt-get install g++ make ruby1.9.1-dev
 
